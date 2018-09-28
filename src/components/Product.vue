@@ -11,7 +11,7 @@
                             {{sum}}
                         </FlexboxItem>
                         <FlexboxItem class="productn-first-item" :span="1/3">
-                            <img src="../assets/integral/icon-money.png" alt="">
+                            <img src="../../../Project/src/assets/integral/icon-money.png" alt="">
                         </FlexboxItem>
                     </Flexbox>
                 </div>
@@ -20,9 +20,9 @@
                         <Flexbox class="productn-list-item">
                             <FlexboxItem class="productn-list-item-l" :span="3/4">
                                 <div class="grayRound"></div>
-                                <img class="yellowRound" src="../assets/images/product-icon.png">
+                                <img class="yellowRound" src="../../../Project/src/assets/images/product-icon.png">
                                 <h3>{{item.desc}}</h3>
-                                <p>时间：<span>{{item.create_time | dateFormate}}</span></p>
+                                <p>时间：<span>{{item.create_time}}</span></p>
                             </FlexboxItem>
                             <FlexboxItem class="productn-list-item-r" :span="1/4">
                                 <p>金额</p>
@@ -32,28 +32,31 @@
                     </div>
                 </div>
                 <div v-else class="productn-list-main">
-                    <img src="../assets/integral/nodata_bg.png" alt="">
+                    <img src="../../../Project/src/assets/integral/nodata_bg.png" alt="">
                     <p>马上投资，积分滚滚来</p>
                 </div>
             </div>
         </div>
+        <loading :show="showLoading" text="loading"></loading>
     </div>
 </template>
 <script>
-    import {XHeader, XButton, Flexbox, FlexboxItem} from 'vux'
+    import {XHeader, XButton, Flexbox, FlexboxItem,Loading} from 'vux'
     export default {
         components: {
             XHeader,
             XButton,
             Flexbox,
-            FlexboxItem
+            FlexboxItem,
+            Loading
         },
         name: 'Product',
         data() {
             return {
                 title:'在投产品',
                 sum:0,
-                data:[]
+                data:[],
+                showLoading:true
             }
         },
         methods: {
@@ -63,14 +66,15 @@
                     if (res.data.code == 0) {
                         _self.data = res.data.data
                         for(let i in res.data.data){
-                            _self.sum += res.data.data[i].integral
+                            _self.sum += Number(res.data.data[i].integral)
                         }
+                        _self.showLoading = false
                     }
                 })
             }
         },
         created() {
-            //this.getInfo()
+            this.getInfo()
         }
     }
 </script>
@@ -100,7 +104,7 @@
             min-height:100vh;
             .producte-banner {
                 height:3.2rem;
-                background: url('../assets/images/product_bg.png') no-repeat center;
+                background: url('../../../Project/src/assets/images/product_bg.png') no-repeat center;
                 background-size: contain;
             }
             .productn-list {
@@ -168,21 +172,21 @@
                             }
                             >h3{
                                 margin-bottom:.2rem;
-                                font-size:15px;
+                                font-size:.3rem;
                             }
                             >p{
-                                font-size:12px;
+                                font-size:.26rem;
                                 color:#888;
                             }
                         }
                         .productn-list-item-r{
                             text-align:center;
                             >p:nth-of-type(1){
-                                font-size:.32rem;
+                                font-size:.28rem;
                                 margin-bottom:.2rem;
                             }
                             >p:nth-of-type(2){
-                                font-size:.32rem;
+                                font-size:.3rem;
                                 color:#af967f;
                             }
 

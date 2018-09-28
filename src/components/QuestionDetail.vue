@@ -5,7 +5,7 @@
             <div class="questionDetaile-banner"></div>
             <div class="questionDetailn-content">
                 <div class="questionDetail-question">
-                    Q: {{info.title}}
+                    Q：{{info.title}}
                 </div>
                 <div class="questionDetail-answer" v-html="info.content"></div>
             </div>
@@ -75,7 +75,7 @@
                     color:#333;
                     font-weight:600;
                     padding:.3rem 0;
-                    font-size:14px;
+                    font-size:0.32rem;
                     border-bottom:1px solid #ddd;
                 }
                 .questionDetail-answer{

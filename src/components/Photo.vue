@@ -24,19 +24,22 @@
                 <img :src="imgUrl">
             </v-touch>
         </x-dialog>
+        <loading :show="showLoading" text="loading"></loading>
     </div>
 </template>
 
 <script>
-    import {XHeader, XDialog} from 'vux'
+    import {XHeader, XDialog,Loading} from 'vux'
     export default {
         components: {
             XHeader,
-            XDialog
+            XDialog,
+            Loading
         },
         name: '',
         data() {
             return {
+                showLoading:true,
                 showAmount:3,
                 photos: {
                     imgs:[{}]
@@ -50,7 +53,7 @@
                     grabCursor: true,
                     centeredSlides: true,
                     slidesPerView: 'auto',
-                    onSlideChangeEnd: (swiper) => {
+                    onTransitionEnd: swiper => {
                         let _self = this
                         //console.log(swiper)
                         _self.photos_index = swiper.activeIndex
@@ -72,10 +75,10 @@
         },
         watch:{
             'photos_index'(val,oldVal){
-                if(val < oldVal){
-                   this.showAmount =  this.photos.imgs.length
-                }else{
-                    this.showAmount = val*3
+                if(val > oldVal){
+                   this.showAmount =  this.showAmount * 2
+                }else if(val >= 5){
+                    this.showAmount =  this.photos.imgs.length
                 }
             }
         },
@@ -99,9 +102,14 @@
                 this.imgUrl = '/' + url
                 this.showFullImg = !this.showFullImg
             },
+            hideLoading () {
+                let _self = this
+                setTimeout(() => {
+                    _self.showLoading = false
+                }, 1500)
+            },
             getPhoto() {
                 let id = this.$route.query.id
-                let _self = this
                 this.$ajax.get('/index/index/getAlbumInfo', {
                     params: {
                         id: id,
@@ -114,6 +122,7 @@
         },
         created() {
             this.getPhoto()
+            this.hideLoading()
         }
     }
 </script>

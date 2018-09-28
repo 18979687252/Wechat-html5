@@ -11,7 +11,7 @@
                             {{sum}}
                         </FlexboxItem>
                         <FlexboxItem class="integralRecordn-first-item">
-                            <img src="../assets/integral/icon-money.png" alt="">
+                            <img src="../../../Project/src/assets/integral/icon-money.png" alt="">
                         </FlexboxItem>
                     </Flexbox>
                 </div>
@@ -19,7 +19,7 @@
                     <Flexbox class="integralRecordn-list-item" v-for="(item,index) in data" :key="index">
                         <FlexboxItem class="integralRecordn-list-item-l" :span="3/4">
                             <h3>{{item.desc}}</h3>
-                            <p>时间：<span>{{item.create_time | dateFormate}}</span></p>
+                            <p>时间：<span>{{item.create_time}}</span></p>
                         </FlexboxItem>
                         <FlexboxItem class="integralRecordn-list-item-r" :span="1/4">
                             <p>积分</p>
@@ -28,28 +28,31 @@
                     </Flexbox>
                 </div>
                 <div v-else class="integralRecordn-list-main">
-                    <img src="../assets/integral/nodata_bg.png" alt="">
+                    <img src="../../../Project/src/assets/integral/nodata_bg.png" alt="">
                     <p>您可致电垂询您的专属 私人理财师了解最新产品信息</p>
                 </div>
             </div>
         </div>
+        <loading :show="showLoading" text="loading"></loading>
     </div>
 </template>
 <script>
-    import {XHeader, XButton, Flexbox, FlexboxItem} from 'vux'
+    import {XHeader, XButton, Flexbox, FlexboxItem,Loading} from 'vux'
     export default {
         components: {
             XHeader,
             XButton,
             Flexbox,
-            FlexboxItem
+            FlexboxItem,
+            Loading
         },
         name: 'IntegralRecord',
         data() {
             return {
                 title:'积分记录',
                 sum:0,
-                data:[]
+                data:[],
+                showLoading:true
             }
         },
         methods: {
@@ -59,8 +62,9 @@
                     if (res.data.code == 0) {
                         _self.data = res.data.data
                         for(let i in res.data.data){
-                            _self.sum += res.data.data[i].integral
+                            _self.sum += Number(res.data.data[i].integral.replace('+',''))
                         }
+                        _self.showLoading = false
                     }
                 })
             }
@@ -96,7 +100,7 @@
             min-height:100vh;
             .integralRecorde-banner {
                 height:3.2rem;
-                background: url('../assets/integral/integral_record_bg.png') no-repeat center;
+                background: url('../../../Project/src/assets/integral/integral_record_bg.png') no-repeat center;
                 background-size: contain;
             }
             .integralRecordn-list {
@@ -155,21 +159,21 @@
                     .integralRecordn-list-item-l{
                         >h3{
                             margin-bottom:.16rem;
-                            font-size:15px;
+                            font-size:.3rem;
                         }
                         >p{
-                            font-size:.32rem;
+                            font-size:.26rem;
                             color:#888;
                         }
                     }
                     .integralRecordn-list-item-r{
                         text-align:center;
                         >p:nth-of-type(1){
-                            font-size:.32rem;
+                            font-size:.28rem;
                             margin-bottom:.16rem;
                         }
                         >p:nth-of-type(2){
-                            font-size:.32rem;
+                            font-size:.3rem;
                             color:#af967f;
 
                         }

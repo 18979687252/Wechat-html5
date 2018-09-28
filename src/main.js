@@ -1,12 +1,11 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 require('swiper/dist/css/swiper.css')
-
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 import FastClick from 'fastclick'
-import filters from './filter/filter.js'
+
 import axios from 'axios'
 import VueTouch from 'vue-touch'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -15,8 +14,6 @@ Vue.use(VueTouch, {name: 'v-touch'})
 Vue.use(VueAwesomeSwiper)
 
 FastClick.attach(document.body)
-
-Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 
 Vue.config.productionTip = false
 
