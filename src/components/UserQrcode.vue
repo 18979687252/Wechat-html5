@@ -1,8 +1,10 @@
 <template>
     <div id="userQrcode-page">
-        <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
+        <!--<x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>-->
         <div class="userQrcode-main">
-            <img :src="imgSrc" alt="">
+            <!--<img :src="imgSrc" alt="">-->
+            <img :src="imgSrc" class="img_bg" alt="">
+            <qrcode :value="qrcodeLink" type="img" class="qrcode" size="90"></qrcode>
         </div>
     </div>
 </template>
@@ -17,6 +19,7 @@
         data() {
             return {
                 title:'我的二维码',
+                qrcodeLink:'',
                 imgSrc:''
             }
         },
@@ -30,6 +33,7 @@
                     }
                     if(res.data.code == 0){
                         _self.imgSrc = 'http://' + res.data.data.bg_img
+                        _self.qrcodeLink = 'http://' + res.data.data.s_uid
                     }
                 })
             }
@@ -60,8 +64,20 @@
             }
         }
         .userQrcode-main {
-            img{
+            min-height: 100vh;
+            position:relative;
+            .img_bg{
                 min-height: 100vh;
+                position:absolute;
+                top:0;
+                left:0;
+                z-index:1;
+            }
+            .qrcode{
+                position:absolute;
+                z-index:2;
+                bottom:2rem;
+                right:1rem;
             }
         }
     }
