@@ -1,10 +1,8 @@
 <template>
     <div id="userQrcode-page">
-        <!--<x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>-->
-        <div class="userQrcode-main">
-            <!--<img :src="imgSrc" alt="">-->
-            <img :src="imgSrc" class="img_bg" alt="">
-            <qrcode :value="qrcodeLink" type="img" class="qrcode" size="90"></qrcode>
+        <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
+        <div class="userQrcode-main" :style="{backgroundImage: 'url(' + imgSrc + ')', backgroundSize:'contain'}">
+            <qrcode :value="qrcodeLink" type="img" class="qrcode" size="120"></qrcode>
         </div>
     </div>
 </template>
@@ -66,18 +64,13 @@
         .userQrcode-main {
             min-height: 100vh;
             position:relative;
-            .img_bg{
-                min-height: 100vh;
-                position:absolute;
-                top:0;
-                left:0;
-                z-index:1;
-            }
+            bottom:0;
+            left:0;
             .qrcode{
                 position:absolute;
-                z-index:2;
+                left:50%;
                 bottom:2rem;
-                right:1rem;
+                margin-left:-60px;
             }
         }
     }

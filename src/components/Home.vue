@@ -89,8 +89,9 @@
         },
         created() {
             let sign = this.$route.query.sign
-            localStorage['sign'] = 'ok3zx0QbILeQMMmT5Tn2YhPOZMC4'
-            //this.chkAuto()
+            localStorage['sign'] = sign
+            // localStorage['sign'] = 'ok3zx0QbILeQMMmT5Tn2YhPOZMC4'
+            this.chkAuto()
         }
     }
 </script>

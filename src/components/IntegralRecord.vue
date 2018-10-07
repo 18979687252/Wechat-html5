@@ -11,7 +11,7 @@
                             {{sum}}
                         </FlexboxItem>
                         <FlexboxItem class="integralRecordn-first-item">
-                            <img src="../../../Project/src/assets/integral/icon-money.png" alt="">
+                            <img src="../assets/integral/icon-money.png" alt="">
                         </FlexboxItem>
                     </Flexbox>
                 </div>
@@ -28,7 +28,7 @@
                     </Flexbox>
                 </div>
                 <div v-else class="integralRecordn-list-main">
-                    <img src="../../../Project/src/assets/integral/nodata_bg.png" alt="">
+                    <img src="../assets/integral/nodata_bg.png" alt="">
                     <p>您可致电垂询您的专属 私人理财师了解最新产品信息</p>
                 </div>
             </div>
@@ -100,7 +100,7 @@
             min-height:100vh;
             .integralRecorde-banner {
                 height:3.2rem;
-                background: url('../../../Project/src/assets/integral/integral_record_bg.png') no-repeat center;
+                background: url('../assets/integral/integral_record_bg.png') no-repeat center;
                 background-size: contain;
             }
             .integralRecordn-list {

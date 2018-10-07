@@ -11,7 +11,7 @@
                             {{sum}}
                         </FlexboxItem>
                         <FlexboxItem class="productn-first-item" :span="1/3">
-                            <img src="../../../Project/src/assets/integral/icon-money.png" alt="">
+                            <img src="../assets/integral/icon-money.png" alt="">
                         </FlexboxItem>
                     </Flexbox>
                 </div>
@@ -20,7 +20,7 @@
                         <Flexbox class="productn-list-item">
                             <FlexboxItem class="productn-list-item-l" :span="3/4">
                                 <div class="grayRound"></div>
-                                <img class="yellowRound" src="../../../Project/src/assets/images/product-icon.png">
+                                <img class="yellowRound" src="../assets/images/product-icon.png">
                                 <h3>{{item.desc}}</h3>
                                 <p>时间：<span>{{item.create_time}}</span></p>
                             </FlexboxItem>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div v-else class="productn-list-main">
-                    <img src="../../../Project/src/assets/integral/nodata_bg.png" alt="">
+                    <img src="../assets/integral/nodata_bg.png" alt="">
                     <p>马上投资，积分滚滚来</p>
                 </div>
             </div>
@@ -104,7 +104,7 @@
             min-height:100vh;
             .producte-banner {
                 height:3.2rem;
-                background: url('../../../Project/src/assets/images/product_bg.png') no-repeat center;
+                background: url('../assets/images/product_bg.png') no-repeat center;
                 background-size: contain;
             }
             .productn-list {
