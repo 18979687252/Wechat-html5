@@ -65,7 +65,6 @@
               <br>
               完善信息
             </router-link>
-
           </p>
         </div>
         <div @click="closeDialog" class="dialog-close">

@@ -4,13 +4,14 @@
             <flexbox class="member-gist-main">
                 <flexbox-item class="member-gist-avatar" :span="1/4">
                     <img :src="info.head_portrait" alt="">
+                    <input @change="uploadPhoto($event)" type="file" class="kyc-passin">
                 </flexbox-item>
                 <flexbox-item class="member-gist-info" :span="3/4">
                     <div class="member-gist-info-t fixClear">
                         <h1 class="fl">{{info.username}}</h1>
                         <router-link tag="p" class="fr" to="/fullinfo">
                             编辑
-                            <x-icon type="ios-arrow-right" size="24" class="nav-to" style="fill:#fff;"></x-icon>
+                            <x-icon type="ios-arrow-right" :size="24" class="nav-to" style="fill:#fff;"></x-icon>
                         </router-link>
                     </div>
                     <div class="member-gist-info-btn">
@@ -23,6 +24,7 @@
                     </div>
                 </flexbox-item>
             </flexbox>
+            <p class="pictrueInfo">图片摄于2016迪拜之旅-帆船酒店外景实拍</p>
         </div>
         <div class="member-info-main">
             <div class="member-info-integral member-info">
@@ -43,17 +45,17 @@
             <div class="member-info-nav member-info">
                 <flexbox class="member-info-nav-main">
                     <flexbox-item>
-                        <router-link tag="div" to="/userQrcode" class="member-info-nav-item" :style="'color:' + memberType[info.level].color">
+                        <router-link tag="div" to="/userQrcode" class="member-info-nav-item">
                             <i :class="'nav ' + memberType[info.level].icon3"></i> 推广二维码
                         </router-link>
                     </flexbox-item>
                     <flexbox-item>
-                        <router-link tag="div" to="/product" class="member-info-nav-item" :style="'color:' + memberType[info.level].color">
+                        <router-link tag="div" to="/product" class="member-info-nav-item">
                             <i :class="'nav ' +memberType[info.level].icon4"></i> 在投产品
                         </router-link>
                     </flexbox-item>
                     <flexbox-item>
-                        <router-link tag="div" to="/integralRecord" class="member-info-nav-item" :style="'color:' + memberType[info.level].color">
+                        <router-link tag="div" to="/integralRecord" class="member-info-nav-item">
                             <i :class="'nav ' +memberType[info.level].icon5"></i> 积分记录
                         </router-link>
                     </flexbox-item>
@@ -73,7 +75,7 @@
             </div>
             <div class="member-footer">
                 <group class="btn-area">
-                    <x-button type="button" class="member-rights-btn" link="rights">会员权益</x-button>
+                    <x-button type="button" class="member-rights-btn" link="rights" :style="{'background': memberType[info.level].color}">会员权益</x-button>
                 </group>
             </div>
         </div>
@@ -173,10 +175,37 @@
                         return
                     }
                     _self.info = res.data.data
+                    //console.log(_self.info)
                     if (!_self.info.head_portrait || _self.info.head_portrait == '') {
                         _self.info.head_portrait = 'data:image/jpeg;base64,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'
                     }
-                    //   console.log(_self.info)
+                })
+            },
+            uploadPhoto(e) {
+                let _self = this
+                // 利用fileReader对象获取file
+                let file = e.target.files[0];
+                let filesize = file.size;
+                let filename = file.name;
+                // 2,621,440   2M
+                if (filesize > 2101440) {
+                    // 图片大于2MB
+                }
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    // 读取到的图片base64 数据编码 将此编码字符串传给后台即可
+                    let imgcode = e.target.result;
+                    //console.log(imgcode)
+                    _self.uploadAction(imgcode.split(',')[1])
+                }
+            },
+            uploadAction(imgStr){
+                let data = {head_portrait:imgStr}
+                this.$ajax.get('/index/user/update_head_portrait',data, {params: {sign: localStorage['sign']}}).then(res => {
+                    if(res.data.code === 0){
+                        this.getInfo()
+                    }
                 })
             }
         },
@@ -233,6 +262,21 @@
                         height: 1.4rem;
                         margin-left: .4rem;
                         border-radius: 100%;
+                    }
+                    .kyc-passin{
+                        position:absolute;
+                        z-index:1;
+                        left:0;
+                        top:0;
+                        display: block;
+                        opacity: 0;
+                        -ms-filter: 'alpha(opacity=0)';
+                        border:0;
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        margin-left: .4rem;
+                        border-radius: 100%;
+                        outline: 0;
                     }
                 }
                 .member-gist-info {
@@ -305,6 +349,13 @@
                     }
                 }
             }
+            .pictrueInfo{
+                position:absolute;
+                top:2.6rem;
+                right:.2rem;
+                font-size:0.2rem;
+                color:#000;
+            }
         }
         .member-info-main {
             position: relative;
@@ -338,6 +389,7 @@
             .member-info-nav {
                 margin:.16rem 0;
                 .member-info-nav-item{
+                    color:#6f6f6f;
                     background: #fff;
                     padding:.36rem 0;
                     border-right:1px solid #eee;

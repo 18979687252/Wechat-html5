@@ -525,11 +525,7 @@
             _self.toastMsg = res.data.msg
             return
           }
-          _self.toast = true;
-          _self.toastMsg = '已提交'
-          setTimeout(function () {
-            _self.$router.push('/profile')
-          }, 1000)
+          _self.$router.push('/profile')
         }, () => {
           _self.toast = true;
           _self.toastMsg = '提交失败'

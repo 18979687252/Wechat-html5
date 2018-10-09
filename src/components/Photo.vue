@@ -5,16 +5,14 @@
         </x-header>
         <div class="page-main">
             <swiper :options="swiperOpt" ref="mySwiper">
-                <swiper-slide v-for="(item, index) in photos.imgs" :key="index" v-if="index < showAmount">
+                <swiper-slide v-for="(item, index) in photos.imgs" :key="index">
                     <div :style="'background-image: url(/'+ item.img +') '"
                          style="width: 283px; height: 415px; background-size: cover; background-repeat: no-repeat; background-position: center;"
                          @click="openFullImg(item.img)">
                     </div>
                 </swiper-slide>
-
             </swiper>
             <div class="swiper-pagination" slot="pagination"></div>
-
             <h2>{{photos.title}}</h2>
             <!--<p v-html="photos.describe_info"></p>-->
             <p v-html="photos.imgs[photos_index].describe"></p>
@@ -40,7 +38,6 @@
         data() {
             return {
                 showLoading:true,
-                showAmount:3,
                 photos: {
                     imgs:[{}]
                 },
@@ -71,15 +68,6 @@
         computed: {
             swiper() {
                 return this.$refs.mySwiper.swiper
-            }
-        },
-        watch:{
-            'photos_index'(val,oldVal){
-                if(val > oldVal){
-                   this.showAmount =  this.showAmount * 2
-                }else if(val >= 5){
-                    this.showAmount =  this.photos.imgs.length
-                }
             }
         },
         methods: {

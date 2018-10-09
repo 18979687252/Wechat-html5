@@ -1,8 +1,8 @@
 <template>
     <div id="userQrcode-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
-        <div class="userQrcode-main" :style="{backgroundImage: 'url(' + imgSrc + ')', backgroundSize:'contain'}">
-            <qrcode :value="qrcodeLink" type="img" class="qrcode" size="120"></qrcode>
+        <div class="userQrcode-main" :style="{backgroundImage: 'url(' + imgSrc + ')', backgroundSize:'cover'}">
+            <qrcode :value="qrcodeLink" type="img" class="qrcode" :size="100"></qrcode>
         </div>
     </div>
 </template>
@@ -64,13 +64,13 @@
         .userQrcode-main {
             min-height: 100vh;
             position:relative;
+            background-repeat: no-repeat;
             bottom:0;
             left:0;
             .qrcode{
                 position:absolute;
-                left:50%;
+                right:.7rem;
                 bottom:2rem;
-                margin-left:-60px;
             }
         }
     }

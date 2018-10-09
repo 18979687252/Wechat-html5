@@ -8,9 +8,6 @@
         <div>
           <img src="../assets/images/sample-gift.jpg" alt="">
         </div>
-        <!--<div v-html="desc" class="gift-desc">-->
-
-        <!--</div>-->
       </div>
       <group class="btn-area">
         <template v-if="canGet">
@@ -73,7 +70,6 @@
         <div class="dialog-body">
           <h2>{{getTitle}}</h2>
           <p v-html="getBody">
-
           </p>
         </div>
 
@@ -82,8 +78,6 @@
         </div>
       </x-dialog>
     </div>
-
-
   </div>
 </template>
 
@@ -111,7 +105,6 @@
         '<br>' +
         '最终解释权归W▪E俱乐部所有</p>',
         applyDialog: false,
-        isLogin: true,
         getDialog: false,
         getTitle: '',
         getBody: '',
@@ -138,20 +131,13 @@
         })
       },
       getGift () {
-//        if(localStorage.hasOwnProperty('uid'))
-//          this.isLogin = true
-//        else
-//          this.isLogin = false
-
-        if(this.isLogin){
-          this.getDialog = true
-
-
-        }else{
-          this.applyDialog = true
-          this.getTitle = ' '
-          this.getBody = '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 领取专属会员礼'
-        }
+          this.$ajax.get('/index/user/get_userperfect', {params: {sign: localStorage['sign']}}).then(res => {
+            if(res.data.code === 0){
+                this.getDialog = true
+            }else{
+                this.$router.push({path:'/fullinfo'})
+            }
+        })
       },
       submit () {
         if(this.realname.length === 0){
