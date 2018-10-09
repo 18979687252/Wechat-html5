@@ -31,7 +31,7 @@
                     }
                     if(res.data.code == 0){
                         _self.imgSrc = 'http://' + res.data.data.bg_img
-                        _self.qrcodeLink = 'http://' + res.data.data.s_uid
+                        _self.qrcodeLink = res.data.data.s_uid
                     }
                 })
             }

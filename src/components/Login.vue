@@ -47,7 +47,7 @@
         </group>
       </div>
     </div>
-    <div v-transfer-dom>
+    <div>
       <x-dialog v-model="openDialog" class="login-dialog">
         <div class="dialog-title">
           <img src="../assets/images/regist-dialog-title.jpg" alt="">
@@ -95,6 +95,7 @@
         birthday: '',
         mobile: '',
         veriCode: '',
+        s_uid: '',
         openDialog: false,
         dialogTit: '',
         dialogContent: '',
@@ -134,7 +135,7 @@
           _self.openDialog = true
           return
         }
-        this.$ajax.post('/index/user/userreg', {username: _self.username, mobile: _self.mobile, birthday: _self.birthday, id_number: _self.idNo, code: _self.veriCode}, { params: {sign: localStorage['sign']}}).then((res) => {
+        this.$ajax.post('/index/user/userreg', {username: _self.username, mobile: _self.mobile, birthday: _self.birthday, id_number: _self.idNo, code: _self.veriCode, s_uid: _self.s_uid}, { params: {sign: localStorage['sign']}}).then((res) => {
           localStorage.uid = res.data.data.id
           _self.userStatus = res.data.data.status
           if(res.data.data.status == 2){
@@ -208,6 +209,9 @@
       }
     },
     created () {
+        if(this.$route.query.s_uid){
+          this.s_uid = this.$route.query.s_uid
+        }
     }
   }
 </script>
