@@ -42,7 +42,6 @@
 
 <script>
   import { XHeader, XDialog, XButton, Swiper, SwiperItem } from 'vux'
-
   export default {
     components: {
       XHeader,
@@ -55,17 +54,10 @@
     data () {
       return {
         openDialog: false,
-        dialogTit: '品茶活动',
-        dialogContent: 'WE俱乐部日前在茶馆举行 <br>' +
-        '“品茶之韵味、享悠之生活”主题活动 <br>' +
-        '该活动融休闲、体验、文化于一体, <br>' +
-        '给在座嘉宾提供一种身心清净的享受 <br>' +
-        '举办地址：上海市黄浦区人民广场3333号',
         applyDialog: false,
         isLogin: true,
         applyTitle: '请您先',
         applyInfo: '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动 ',
-
         selectedEvent: {},
         event: {},
         id: this.$route.query.id
@@ -135,9 +127,8 @@
       }
     },
     created () {
-
       this.getEvent()
-    }
+    },
   }
 </script>
 
