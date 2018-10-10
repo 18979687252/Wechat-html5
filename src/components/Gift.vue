@@ -132,7 +132,7 @@
       },
       getGift () {
           this.$ajax.get('/index/user/get_userperfect', {params: {sign: localStorage['sign']}}).then(res => {
-            if(res.data.code === 0){
+            if(res.data.code === 0 && res.data.data.gender){
                 this.getDialog = true
             }else{
                 this.$router.push({path:'/fullinfo'})

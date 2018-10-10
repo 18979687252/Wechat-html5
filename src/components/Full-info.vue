@@ -563,7 +563,7 @@
 
       selectItem (index) {
         let _self = this
-        console.log(this.popChecked, this.popupCheckType, this.popupOpts, this.popupKeyType, typeof this.popupCheckType)
+        //console.log(this.popChecked, this.popupCheckType, this.popupOpts, this.popupKeyType, typeof this.popupCheckType)
         switch (this.popupCheckType) {
           case 'radio':
             this[this.popupKeyType] = this.popupOpts[index]

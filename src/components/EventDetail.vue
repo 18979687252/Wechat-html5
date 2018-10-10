@@ -64,7 +64,6 @@
       }
     },
     methods: {
-
       getEvent () {
         let _self = this
         let id = this.$route.query.id
