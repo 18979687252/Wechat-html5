@@ -2,7 +2,9 @@
     <div id="integralRecord-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
         <div :class="['integralRecord-main',{white:!data.length}]">
-            <div class="integralRecorde-banner"></div>
+            <div class="integralRecorde-banner">
+                <p class="pictrueInfo">图片摄于2018南非狂野之旅-SABISABI营地篝火晚宴</p>
+            </div>
             <div class="integralRecordn-list">
                 <div class="integralRecordn-first">
                     <Flexbox>
@@ -102,6 +104,13 @@
                 height:3.2rem;
                 background: url('../assets/integral/integral_record_bg.png') no-repeat center;
                 background-size: contain;
+                .pictrueInfo{
+                    position:absolute;
+                    top:3rem;
+                    right:.2rem;
+                    font-size:0.2rem;
+                    color:#fff;
+                }
             }
             .integralRecordn-list {
                 padding:0 .4rem;
@@ -154,7 +163,7 @@
                     margin-bottom:.2rem;
                     background:#fff;
                     border-radius:10px;
-                    padding:.3rem;
+                    padding:.3rem .2rem;
                     box-shadow: 0 1px 2px rgba(224, 214, 214, 0.5);
                     .integralRecordn-list-item-l{
                         >h3{

@@ -2,7 +2,9 @@
     <div id="product-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
         <div :class="['product-main',{white:!data.length}]">
-            <div class="producte-banner"></div>
+            <div class="producte-banner">
+                <p class="pictrueInfo">图片摄于2018南非狂野之旅-开普敦直升机停机坪</p>
+            </div>
             <div class="productn-list">
                 <div class="productn-first">
                     <Flexbox>
@@ -106,6 +108,13 @@
                 height:3.2rem;
                 background: url('../assets/images/product_bg.png') no-repeat center;
                 background-size: contain;
+                .pictrueInfo{
+                    position:absolute;
+                    top:3.1rem;
+                    right:.2rem;
+                    font-size:0.2rem;
+                    color:#000;
+                }
             }
             .productn-list {
                 padding-left:.6rem;
