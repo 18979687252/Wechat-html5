@@ -39,7 +39,7 @@
         data() {
             return {
                 showLoading:true,
-                showAmount:3,
+                showAmount:2,
                 photos: {
                     imgs:[{}]
                 },
@@ -75,7 +75,7 @@
         watch:{
             'photos_index'(val,oldVal){
                 if(val > oldVal){
-                    this.showAmount =  this.showAmount * 2
+                    this.showAmount =  this.showAmount + 2
                 }else if(val >= 5){
                     this.showAmount =  this.photos.imgs.length
                 }

@@ -46,7 +46,7 @@
                 <flexbox class="member-info-nav-main">
                     <flexbox-item>
                         <router-link tag="div" to="/userQrcode" class="member-info-nav-item">
-                            <i :class="'nav ' + memberType[info.level].icon3"></i> 推广二维码
+                            <i :class="'nav ' + memberType[info.level].icon3"></i> 我的二维码
                         </router-link>
                     </flexbox-item>
                     <flexbox-item>
