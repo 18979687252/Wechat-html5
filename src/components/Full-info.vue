@@ -129,11 +129,9 @@
             <input type="text" v-show="item.hasOwnProperty('desc')" v-model="item.desc" class="mock-ipt" placeholder="请描述" @change="selectItem(index)">
             <span class="checkIcon"  v-show="popChecked.indexOf(item.key) >= 0"><x-icon type="ios-checkmark-empty"></x-icon></span>
           </label>
-
         </div>
       </div>
     </div>
-
     <toast v-model="toast" :time="1000" width="auto" type="text">{{toastMsg}}</toast>
   </div>
 </template>

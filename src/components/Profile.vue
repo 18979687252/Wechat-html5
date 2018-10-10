@@ -79,10 +79,11 @@
                 </group>
             </div>
         </div>
+        <toast v-model="toast" :time="1000" width="auto" type="text">{{toastMsg}}</toast>
     </div>
 </template>
 <script>
-    import {XHeader, XButton, Group, Cell, Flexbox, FlexboxItem} from 'vux'
+    import {XHeader, XButton, Group, Cell, Flexbox, FlexboxItem,Toast} from 'vux'
     export default {
         components: {
             XHeader,
@@ -90,10 +91,13 @@
             Group,
             Cell,
             Flexbox,
-            FlexboxItem
+            FlexboxItem,
+            Toast
         },
         data() {
             return {
+                toast:false,
+                toastMsg:'',
                 memberType: {
                     '2': {
                         icon: 'icon-jiaozi',
@@ -196,13 +200,15 @@
                 reader.onload = function (e) {
                     // 读取到的图片base64 数据编码 将此编码字符串传给后台即可
                     let imgcode = e.target.result;
-                    //console.log(imgcode)
+                    //console.log(imgcode.split(',')[1])
                     _self.uploadAction(imgcode.split(',')[1])
                 }
             },
             uploadAction(imgStr){
                 let data = {head_portrait:imgStr}
                 this.$ajax.get('/index/user/update_head_portrait',data, {params: {sign: localStorage['sign']}}).then(res => {
+                    this.toastMsg = res.data.msg
+                    this.toast = true
                     if(res.data.code === 0){
                         this.getInfo()
                     }
