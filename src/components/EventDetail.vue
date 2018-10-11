@@ -127,7 +127,6 @@
         let url = window.location.href
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
             this.wxconfig = res.data.wxconfig
-            alert(this.wxconfig.signature)
         })
       }
     },
@@ -138,7 +137,7 @@
     mounted(){
         let _self = this
         _self.$wechat.config({
-            debug: false,
+            debug: true,
             appId: _self.wxconfig.appId,
             timestamp: _self.wxconfig.timestamp,
             nonceStr: _self.wxconfig.nonceStr,
