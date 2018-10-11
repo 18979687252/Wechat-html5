@@ -111,7 +111,7 @@
     methods: {
       closeDialog () {
         if(!this.isRegistFailed)
-          this.$router.back()
+          this.$router.push({name:'Home'})
         else
           this.openDialog = false
       },
@@ -159,7 +159,7 @@
           }
           _self.openDialog = true
         }, (res) => {
-          console.log('rejected',res)
+          //console.log('rejected',res)
           _self.dialogHead = '注册会员'
           _self.dialogTit = '错误'
           _self.dialogContent = res.data.msg
@@ -167,7 +167,7 @@
           _self.openDialog = true
           _self.isRegistFailed = true
         }).catch(res => {
-          console.log('catch',res)
+          //console.log('catch',res)
           _self.dialogHead = '注册会员'
           _self.dialogTit = '错误'
           _self.dialogContent = res.data.msg

@@ -1,8 +1,10 @@
 <template>
     <div id="userQrcode-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
-        <div class="userQrcode-main" :style="{backgroundImage: 'url(' + imgSrc + ')', backgroundSize:'cover'}">
+        <div class="userQrcode-main">
+            <img src="../assets/images/qrcode_bg.png" alt="" class="poster">
             <qrcode :value="qrcodeLink" type="img" class="qrcode" :size="100"></qrcode>
+            <div class="notice">长按保存海报，推荐好友<span>赢积分</span></div>
         </div>
     </div>
 </template>
@@ -17,8 +19,7 @@
         data() {
             return {
                 title:'我的二维码',
-                qrcodeLink:'',
-                imgSrc:''
+                qrcodeLink:''
             }
         },
         methods: {
@@ -30,7 +31,6 @@
                         return
                     }
                     if(res.data.code == 0){
-                        _self.imgSrc = 'http://' + res.data.data.bg_img
                         _self.qrcodeLink = res.data.data.s_uid
                     }
                 })
@@ -41,10 +41,10 @@
         }
     }
 </script>
-
 <style lang="less">
     #userQrcode-page {
-        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
         .header {
             background-color: #fff;
             font-size: .33rem;
@@ -62,15 +62,31 @@
             }
         }
         .userQrcode-main {
-            min-height: 100vh;
+            background: #aa805c;
             position:relative;
-            background-repeat: no-repeat;
-            bottom:0;
+            padding:.28rem .28rem;
+            top:.8rem;
             left:0;
+            height:100vh;
+            text-align:center;
+            img.poster{
+                width:100%;
+                height:auto;
+            }
             .qrcode{
                 position:absolute;
                 right:.7rem;
-                bottom:2rem;
+                bottom:3rem;
+            }
+            .notice{
+                background: #fff;
+                height:1.16rem;
+                line-height:1.16rem;
+                font-size:.36rem;
+                font-weight:600;
+                span{
+                    color:#fe6130;
+                }
             }
         }
     }
