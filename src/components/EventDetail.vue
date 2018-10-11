@@ -122,11 +122,16 @@
           this.applyTitle = '请您先'
           this.applyInfo = '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动'
         }
-
-      }
+      },
+        getConfig(){
+            this.$ajax.get('/index/user/ceshi', {params: {head_portrait:1,sign: localStorage['sign']}}).then(res => {
+                console.log(res.data.data)
+            })
+        }
     },
     created () {
       this.getEvent()
+        this.getConfig()
     },
   }
 </script>

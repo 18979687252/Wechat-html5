@@ -18,9 +18,9 @@
                     </router-link>
                 </ul>
             </div>
-            <div class="more-question" @click="getInfo">
-                更多问题
-            </div>
+            <!--<div class="more-question" @click="getInfo">-->
+                <!--更多问题-->
+            <!--</div>-->
         </div>
     </div>
 </template>

@@ -152,7 +152,7 @@
                         height:2.4rem;
                     }
                     >p{
-                        width:2.8rem;
+                        width:3rem;
                         margin:.2rem auto;
                         font-size:12px;
                         color:#bacccc;
