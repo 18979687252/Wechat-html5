@@ -60,14 +60,14 @@
         applyInfo: '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动 ',
         selectedEvent: {},
         event: {},
-        id: this.$route.query.id
+        id: this.$route.query.id,
+        wxconfig:{}
       }
     },
     methods: {
       getEvent () {
         let _self = this
         let id = this.$route.query.id
-
         this.$ajax.get('/index/index/activityinfo',{params: {id, sign: localStorage['sign']}}).then(res => {
           _self.event = res.data.data[0]
           let now_time_stamp = new Date().getTime();
@@ -123,16 +123,40 @@
           this.applyInfo = '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动'
         }
       },
-        getConfig(){
-            this.$ajax.get('/index/user/ceshi', {params: {head_portrait:1,sign: localStorage['sign']}}).then(res => {
-                console.log(res.data.data)
-            })
-        }
+      getConfig(){
+        let url = window.location.href
+        this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
+            this.wxconfig = res.data.wxconfig
+            alert(this.wxconfig.signature)
+        })
+      }
     },
     created () {
       this.getEvent()
-        this.getConfig()
+      this.getConfig()
     },
+    mounted(){
+        let _self = this
+        _self.$wechat.config({
+            debug: false,
+            appId: _self.wxconfig.appId,
+            timestamp: _self.wxconfig.timestamp,
+            nonceStr: _self.wxconfig.nonceStr,
+            signature: _self.wxconfig.signature,
+            jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
+        })
+        _self.$wechat.onMenuShareAppMessage({
+            title: _self.event.title,
+            desc: _self.event.describe_info,
+            link: window.location.href,
+            imgUrl: this.event.pic
+        })
+        _self.$wechat.onMenuShareTimeline({
+            title: _self.event.title,
+            link: window.location.href,
+            imgUrl: _self.event.pic
+        })
+    }
   }
 </script>
 

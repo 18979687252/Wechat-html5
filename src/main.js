@@ -8,9 +8,9 @@ import FastClick from 'fastclick'
 import axios from 'axios'
 import VueTouch from 'vue-touch'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import { WechatPlugin } from 'vux'
-Vue.use(WechatPlugin)
+import { WechatPlugin} from 'vux'
 
+Vue.use(WechatPlugin)
 Vue.use(VueTouch, {name: 'v-touch'})
 Vue.use(VueAwesomeSwiper)
 
