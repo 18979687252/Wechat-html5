@@ -31,7 +31,7 @@
                 </div>
                 <div v-else class="integralRecordn-list-main">
                     <img src="../assets/integral/nodata_bg.png" alt="">
-                    <p>您可致电垂询您的专属 私人理财师了解最新产品信息</p>
+                    <p>您可致电垂询您的专属私人理财师了解最新产品信息</p>
                 </div>
             </div>
         </div>

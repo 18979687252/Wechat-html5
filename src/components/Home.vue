@@ -79,7 +79,6 @@
                         _self.chkLogin(_sign)
                         return
                     }
-                    alert(res.data.data)
                     if (res.data.code === 1) {
                         location.href = res.data.data
                     }
@@ -89,7 +88,6 @@
         created() {
             let sign = this.$route.query.sign
             localStorage['sign'] = sign
-            // localStorage['sign'] = 'ok3zx0SC0QSIxTz_rFqmcbUIivPA'
             this.chkAuto()
         }
     }

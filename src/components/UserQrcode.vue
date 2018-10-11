@@ -1,25 +1,30 @@
 <template>
     <div id="userQrcode-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
-        <div class="userQrcode-main">
-            <img src="../assets/images/qrcode_bg.png" alt="" class="poster">
-            <qrcode :value="qrcodeLink" type="img" class="qrcode" :size="100"></qrcode>
-            <div class="notice">长按保存海报，推荐好友<span>赢积分</span></div>
+        <div class="userQrcode-main" v-if="imgLink">
+            <img :src="imgLink" alt="">
+            <div class="footer">
+                <p class="pictrueInfo">图片摄于2018南非狂野之旅-SABISABI营地</p>
+                <p class="notice">长按保存海报，推荐好友<span>赢积分</span></p>
+            </div>
         </div>
+        <loading :show="showLoading" text="loading"></loading>
     </div>
 </template>
 <script>
-    import {XHeader,Qrcode } from 'vux'
+    import {XHeader,Qrcode,Loading} from 'vux'
     export default {
         components: {
             XHeader,
-            Qrcode
+            Qrcode,
+            Loading
         },
         name: 'userQrcode',
         data() {
             return {
                 title:'我的二维码',
-                qrcodeLink:''
+                showLoading:true,
+                imgLink:''
             }
         },
         methods: {
@@ -31,7 +36,8 @@
                         return
                     }
                     if(res.data.code == 0){
-                        _self.qrcodeLink = res.data.data.s_uid
+                        _self.imgLink = res.data.data
+                        _self.showLoading = false
                     }
                 })
             }
@@ -63,29 +69,32 @@
         }
         .userQrcode-main {
             background: #aa805c;
-            position:relative;
-            padding:.28rem .28rem;
-            top:.8rem;
-            left:0;
+            padding:.28rem .4rem;
             height:100vh;
             text-align:center;
-            img.poster{
+            img{
+                margin-top:.8rem;
+                height:84%;
                 width:100%;
-                height:auto;
             }
-            .qrcode{
-                position:absolute;
-                right:.7rem;
-                bottom:3rem;
-            }
-            .notice{
+            .footer {
                 background: #fff;
-                height:1.16rem;
-                line-height:1.16rem;
-                font-size:.36rem;
-                font-weight:600;
-                span{
-                    color:#fe6130;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                .pictrueInfo {
+                    text-align:right;
+                    padding-right:.2rem;
+                    font-size: 0.2rem;
+                    color: #000;
+                }
+                .notice {
+                    height: .7rem;
+                    line-height: .7rem;
+                    font-size: .32rem;
+                    font-weight: 600;
+                    span {
+                        color: #fe6130;
+                    }
                 }
             }
         }
