@@ -13,7 +13,7 @@
                     <router-link tag="li"
                                  v-for="item in data"
                                  :key="item.id"
-                                 v-html="item.content"
+                                 v-html="item.title"
                                  :to="{path:'/questionDetail/' + item.id}">
                     </router-link>
                 </ul>
@@ -89,7 +89,7 @@
 
             }
             .questionn-list {
-               padding:0 .32rem .4rem;
+               padding:0 .2rem .4rem;
                 .questionn-info-title{
                     color:#054193;
                     font-weight:600;
@@ -110,10 +110,10 @@
                     list-style: none;
                     li{
                         border-bottom:1px solid #ddd;
-                        padding:.2rem .1rem;
+                        padding:.2rem .36rem .2rem .1rem;
                         font-size:.3rem;
                         color:#222;
-                        font-weight:500;
+                        font-weight:400;
                         background: url('../assets/images/icon-right.png') no-repeat right center;
                         background-size:.4rem .4rem;
                         .nav-to{

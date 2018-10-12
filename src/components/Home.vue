@@ -51,7 +51,7 @@
         name: 'Home',
         data() {
             return {
-                isLogin: 'notLogin'
+                isLogin: 'Login'
             }
         },
         methods: {
@@ -88,8 +88,8 @@
         created() {
             let sign = this.$route.query.sign
             localStorage['sign'] = sign
-            // localStorage['sign'] = 'ok3zx0SC0QSIxTz_rFqmcbUIivPA'
-            this.chkAuto()
+             localStorage['sign'] = 'ok3zx0SC0QSIxTz_rFqmcbUIivPA'
+//            this.chkAuto()
         }
     }
 </script>

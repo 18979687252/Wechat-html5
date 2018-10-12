@@ -5,7 +5,7 @@
             <div class="questionDetaile-banner"></div>
             <div class="questionDetailn-content">
                 <div class="questionDetail-question">
-                    Q：{{info.title}}
+                    {{info.title}}
                 </div>
                 <div class="questionDetail-answer" v-html="info.content"></div>
             </div>

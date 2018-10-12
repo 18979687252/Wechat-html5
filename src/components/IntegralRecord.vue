@@ -24,7 +24,7 @@
                             <p>时间：<span>{{item.create_time}}</span></p>
                         </FlexboxItem>
                         <FlexboxItem class="integralRecordn-list-item-r" :span="1/4">
-                            <p>积分</p>
+                            <h3>积分</h3>
                             <p>{{item.integral}}</p>
                         </FlexboxItem>
                     </Flexbox>
@@ -121,12 +121,12 @@
                     border-radius:10px;
                     box-shadow: 0 1px 2px rgba(224, 214, 214, 0.5);
                     .integralRecordn-first-item{
-                        height:1.46rem;
-                        line-height:1.46rem;
+                        height:1.6rem;
+                        line-height:1.6rem;
                     }
                     .integralRecordn-first-item:nth-of-type(1){
                         color:#765436;
-                        font-size:14px;
+                        font-size:.36rem;
                         font-weight: 600;
                         text-align:right;
                     }
@@ -134,7 +134,7 @@
                         color:#765436;
                         font-size:24px;
                         font-weight:600;
-                        text-align:center;
+                        text-align:left;
                     }
                     .integralRecordn-first-item:nth-of-type(3){
                         >img{
@@ -145,7 +145,6 @@
                     }
                 }
                 .integralRecordn-list-main{
-                    text-align:center;
                     >img{
                         margin-top:1.2rem;
                         width:2.4rem;
@@ -156,6 +155,7 @@
                         margin:.2rem auto;
                         font-size:12px;
                         color:#bacccc;
+                        text-align:center;
                     }
 
                 }
@@ -165,26 +165,22 @@
                     border-radius:10px;
                     padding:.3rem .2rem;
                     box-shadow: 0 1px 2px rgba(224, 214, 214, 0.5);
-                    .integralRecordn-list-item-l{
+                    .integralRecordn-list-item-l,.integralRecordn-list-item-r{
                         >h3{
-                            margin-bottom:.16rem;
+                            margin-bottom:.14rem;
                             font-size:.3rem;
                         }
                         >p{
-                            font-size:.26rem;
-                            color:#888;
+                            font-size:.28rem;
+                            color:#666;
                         }
                     }
                     .integralRecordn-list-item-r{
-                        text-align:center;
-                        >p:nth-of-type(1){
-                            font-size:.28rem;
-                            margin-bottom:.16rem;
-                        }
-                        >p:nth-of-type(2){
-                            font-size:.3rem;
+                        padding-right:.2rem;
+                        text-align:right;
+                        >p{
                             color:#af967f;
-
+                            font-size:.34rem;
                         }
 
                     }
