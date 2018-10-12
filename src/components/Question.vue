@@ -110,7 +110,7 @@
                     list-style: none;
                     li{
                         border-bottom:1px solid #ddd;
-                        padding:.2rem .36rem .2rem .1rem;
+                        padding:.24rem .36rem .24rem .1rem;
                         font-size:.3rem;
                         color:#222;
                         font-weight:400;

@@ -475,6 +475,7 @@
                     line-height: 1rem;
                     font-size: 15px;
                     padding-left:.2rem;
+                    text-align:center;
                 }
                 .weui-cells {
                     margin-top: 0;
