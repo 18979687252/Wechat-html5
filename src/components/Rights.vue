@@ -34,7 +34,7 @@
   #rights-page {
     min-height: 100vh;
     padding-top: .8rem;
-    background: url("../assets/images/bg-rights.jpg") no-repeat scroll bottom transparent;
+    background: url("../assets/images/bg-rights.png") no-repeat scroll bottom transparent;
     background-size: cover;
     .header {
       background-color: #fff;

@@ -70,9 +70,13 @@
         let id = this.$route.query.id
         this.$ajax.get('/index/index/activityinfo',{params: {id, sign: localStorage['sign']}}).then(res => {
           _self.event = res.data.data[0]
+          // 获取微信配置信息，自定义分享
+          _self.getConfig(res.data.data[0])
+          // 活动是否过期判断
           let now_time_stamp = new Date().getTime();
           let event_end_time_stamp = new Date(_self.event.end_time.replace(/-/g, '/')).getTime();
           now_time_stamp > event_end_time_stamp ? _self.event.isPast = true : _self.event.isPast = false
+
         })
       },
       toApply () {
@@ -123,38 +127,35 @@
           this.applyInfo = '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动'
         }
       },
-      getConfig(){
-        let url = window.location.href
+      getConfig(event){
+        let link = window.location.href
+        let url = window.location.href.split('#')[0]
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
-            this.wxconfig = res.data.wxconfig
+            let wxconfig = res.data.wxconfig
+            this.$wechat.config({
+                debug: true,
+                appId: wxconfig.appId,
+                timestamp: wxconfig.timestamp,
+                nonceStr:wxconfig.nonceStr,
+                signature: wxconfig.signature,
+                jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
+            })
+            this.$wechat.onMenuShareAppMessage({
+                title: event.title,
+                desc: event.describe_info,
+                link: link,
+                imgUrl:event.pic
+            })
+            this.$wechat.onMenuShareTimeline({
+                title: event.title,
+                link: link,
+                imgUrl: event.pic
+            })
         })
       }
     },
     created () {
       this.getEvent()
-      this.getConfig()
-    },
-    mounted(){
-        let _self = this
-        _self.$wechat.config({
-            debug: true,
-            appId: _self.wxconfig.appId,
-            timestamp: _self.wxconfig.timestamp,
-            nonceStr: _self.wxconfig.nonceStr,
-            signature: _self.wxconfig.signature,
-            jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
-        })
-        _self.$wechat.onMenuShareAppMessage({
-            title: _self.event.title,
-            desc: _self.event.describe_info,
-            link: window.location.href,
-            imgUrl: this.event.pic
-        })
-        _self.$wechat.onMenuShareTimeline({
-            title: _self.event.title,
-            link: window.location.href,
-            imgUrl: _self.event.pic
-        })
     }
   }
 </script>
