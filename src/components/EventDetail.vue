@@ -129,7 +129,9 @@
       },
       getConfig(event){
         let link = window.location.href
-        let url = window.location.href.split('#')[0]
+        let url = encodeURIComponent(window.location.href.split('#')[0])
+          alert(window.location.href.split('#')[0])
+          alert('url' + url)
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
             let wxconfig = res.data
             this.$wechat.config({
