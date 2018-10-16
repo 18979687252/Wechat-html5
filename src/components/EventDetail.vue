@@ -131,7 +131,7 @@
         let link = window.location.href
         let url = window.location.href.split('#')[0]
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
-            let wxconfig = res.data.wxconfig
+            let wxconfig = res.data
             this.$wechat.config({
                 debug: true,
                 appId: wxconfig.appId,

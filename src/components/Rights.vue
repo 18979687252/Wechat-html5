@@ -10,6 +10,7 @@
       <div>
         <img src="../assets/images/rights-tab.png" alt="">
       </div>
+      <p class="pictrueInfo">图片摄于2016年迪拜之旅-帆船酒店外景实拍</p>
     </div>
   </div>
 </template>
@@ -56,6 +57,13 @@
     }
     .page-main {
       padding: .6rem .65rem;
+      .pictrueInfo{
+        position:absolute;
+        bottom:.3rem;
+        right:.2rem;
+        font-size:0.2rem;
+        color:#000;
+      }
       h1 {
         color: #2c2e31;
         font-size: .41rem;
