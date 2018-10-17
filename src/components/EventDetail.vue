@@ -60,8 +60,7 @@
         applyInfo: '<a href="#/regist" class="default-btn">登录/注册会员</a> <br> 再报名活动 ',
         selectedEvent: {},
         event: {},
-        id: this.$route.query.id,
-        wxconfig:{}
+        id: this.$route.query.id
       }
     },
     methods: {
@@ -128,27 +127,27 @@
         }
       },
       getConfig(event){
-        let link = window.location.href.split('#')[0] + '#' + '/event-detail?id=' + this.id
-        let url = encodeURIComponent(window.location.href.split('#')[0])
+        let href = window.location.href
+        let url = encodeURIComponent(href.split('#')[0])
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
-            let wxconfig = res.data
+            let wxConfig = res.data
             this.$wechat.config({
                 debug: false,
-                appId: wxconfig.appId,
-                timestamp: wxconfig.timestamp,
-                nonceStr:wxconfig.nonceStr,
-                signature: wxconfig.signature,
+                appId: wxConfig.appId,
+                timestamp: wxConfig.timestamp,
+                nonceStr:wxConfig.nonceStr,
+                signature: wxConfig.signature,
                 jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
             })
             this.$wechat.onMenuShareAppMessage({
                 title: '中城银信',
                 desc: event.title,
-                link: link,
+                link: href,
                 imgUrl:'http://wx.ccccmt.com/' + event.pic
             })
             this.$wechat.onMenuShareTimeline({
                 title: event.title,
-                link: link,
+                link: href,
                 imgUrl: 'http://wx.ccccmt.com/' + event.pic
             })
         })
