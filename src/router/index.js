@@ -20,7 +20,6 @@ import QuestionDetail from '@/components/QuestionDetail'
 import UserQrcode from '@/components/UserQrcode'
 
 Vue.use(Router)
-
 export default new Router({
     routes: [
         {
@@ -101,7 +100,10 @@ export default new Router({
         {
             path: '/questionDetail/:id',
             name: 'QuestionDetail',
-            component: QuestionDetail
+            component: QuestionDetail,
+            meta:{
+                shareInComponent:true
+            }
         },
         {
             path: '/userQrcode',

@@ -321,7 +321,6 @@
                 popDesc: '',
                 toast: false,
                 toastMsg: '',
-                isFirst: true
             }
         },
         methods: {
@@ -334,9 +333,6 @@
                         let _data = res.data.data
                         if (_data.gender) {
                             _self.sex = _self.sexOpt[+_data.gender - 1]
-                            _self.isFirst = false
-                        } else {
-                            _self.isFirst = true
                         }
                         if (_data.industry) {
                             _self.job = _self.jobOpt[+_data.industry - 1]
@@ -549,11 +545,7 @@
                         _self.toast = true;
                         return
                     }
-                    if(_self.isFirst){
-                        _self.toastMsg = '填写成功'
-                    }else{
-                        _self.toastMsg = '修改成功'
-                    }
+                    _self.toastMsg = '提交成功'
                     _self.toast = true
                     setTimeout(function(){
                         _self.$router.push('/profile')

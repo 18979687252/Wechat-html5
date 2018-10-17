@@ -128,12 +128,12 @@
         }
       },
       getConfig(event){
-        let link = window.location.href
+        let link = window.location.href.split('#')[0] + '#' + '/event-detail?id=' + this.id
         let url = encodeURIComponent(window.location.href.split('#')[0])
         this.$ajax.get('/index/user/ceshi', {params: {head_portrait:url}}).then(res => {
             let wxconfig = res.data
             this.$wechat.config({
-                debug: true,
+                debug: false,
                 appId: wxconfig.appId,
                 timestamp: wxconfig.timestamp,
                 nonceStr:wxconfig.nonceStr,
@@ -141,15 +141,15 @@
                 jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
             })
             this.$wechat.onMenuShareAppMessage({
-                title: event.title,
-                desc: event.describe_info,
+                title: '中城银信',
+                desc: event.title,
                 link: link,
-                imgUrl:event.pic
+                imgUrl:'http://wx.ccccmt.com/' + event.pic
             })
             this.$wechat.onMenuShareTimeline({
                 title: event.title,
                 link: link,
-                imgUrl: event.pic
+                imgUrl: 'http://wx.ccccmt.com/' + event.pic
             })
         })
       }

@@ -20,6 +20,13 @@ Vue.config.productionTip = false
 
 Vue.prototype.$ajax = axios
 
+// 路由逻辑
+router.afterEach((to, from, next) => {
+   if(!to.meta.shareInComponent){
+
+   }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
