@@ -40,12 +40,12 @@ router.afterEach((to, from, next) => {
                title: '中城银信',
                desc: '中城银信 W•E CLUB-ONLY FOR YOU',
                link: href,
-               imgUrl:'http://wx.ccccmt.com/public/images/ShareLogo2.png'
+               imgUrl:'http://wx.ccccmt.com/public/images/sharelogo.jpg'
            })
            Vue.wechat.onMenuShareTimeline({
                title: '中城银信 W•E CLUB-ONLY FOR YOU',
                link: href,
-               imgUrl:'http://wx.ccccmt.com/public/images/ShareLogo2.png'
+               imgUrl:'http://wx.ccccmt.com/public/images/sharelogo.jpg'
            })
        })
    }
