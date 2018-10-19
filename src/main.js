@@ -38,14 +38,14 @@ router.afterEach((to, from, next) => {
            })
            Vue.wechat.onMenuShareAppMessage({
                title: '中城银信',
-               desc: '中城银信 W•E CLUB-ONLY FOR YOU',
+               desc: 'W•E CLUB-ONLY FOR YOU',
                link: href,
-               imgUrl:'http://wx.ccccmt.com/public/images/sharelogo.jpg'
+               imgUrl:'http://wx.ccccmt.com/public/images/SHARE_LOGO.jpg'
            })
            Vue.wechat.onMenuShareTimeline({
-               title: '中城银信 W•E CLUB-ONLY FOR YOU',
+               title: 'W•E CLUB-ONLY FOR YOU',
                link: href,
-               imgUrl:'http://wx.ccccmt.com/public/images/sharelogo.jpg'
+               imgUrl:'http://wx.ccccmt.com/public/images/SHARE_LOGO.jpg'
            })
        })
    }
