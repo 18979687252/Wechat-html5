@@ -59,7 +59,7 @@
       padding: .6rem .65rem;
       .pictrueInfo{
         position:absolute;
-        bottom:.3rem;
+        bottom:.1rem;
         right:.2rem;
         font-size:0.2rem;
         color:#000;
