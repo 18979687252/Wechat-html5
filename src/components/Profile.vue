@@ -80,6 +80,7 @@
             </div>
         </div>
         <toast v-model="toast" :time="1000" width="auto" type="text">{{toastMsg}}</toast>
+        <loading :show="showLoading" text="loading"></loading>
     </div>
 </template>
 <script>
@@ -96,6 +97,7 @@
         },
         data() {
             return {
+                showLoading:false,
                 toast:false,
                 toastMsg:'',
                 memberType: {
@@ -136,7 +138,7 @@
                 info: {
                     "id": '',
                     "openid": "",
-                    "level": '0',
+                    "level": '',
                     "mobile": "",
                     "username": "",
                     "id_number": "",
@@ -172,7 +174,8 @@
         },
         methods: {
             getInfo() {
-                const _self = this;
+                const _self = this
+                _self.showLoading = true
                 this.$ajax.get('/index/user/getinformation', {params: {sign: localStorage['sign']}}).then(res => {
                     if (res.data.code == 1001) {
                         alert(res.data.msg)
@@ -185,6 +188,7 @@
                     }else if(_self.info.head_portrait.indexOf('http') === -1){ //数据返回没有'http://',微信头像带有'http://'
                         _self.info.head_portrait = 'http://' + _self.info.head_portrait
                     }
+                    _self.showLoading = false
                 })
             },
             uploadPhoto(e) {
