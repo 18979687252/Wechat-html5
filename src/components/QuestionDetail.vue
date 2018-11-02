@@ -2,7 +2,9 @@
     <div id="questionDetail-page">
         <x-header :left-options="{showBack: false}" class="header">{{title}}</x-header>
         <div class="questionDetail-main">
-            <div class="questionDetaile-banner"></div>
+            <div class="questionDetaile-banner">
+                <p class="pictrueInfo">图片摄于2016迪拜之旅-迪拜F1赛道</p>
+            </div>
             <div class="questionDetailn-content">
                 <div class="questionDetail-question">
                     {{info.title}}
@@ -68,6 +70,13 @@
                 height:3.2rem;
                 background: url('../assets/images/question_bg.png') no-repeat center;
                 background-size: 100% 100%;
+                .pictrueInfo{
+                    position:absolute;
+                    top:3.5rem;
+                    right:.2rem;
+                    font-size:0.2rem;
+                    color:#000;
+                }
             }
             .questionDetailn-content {
                padding:0 .32rem .4rem;
